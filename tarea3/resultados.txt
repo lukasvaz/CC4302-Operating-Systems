@@ -1,0 +1,78 @@
+Sistema operativo utilizado
+Linux debian11mate 5.10.0-19-amd64 #1 SMP Debian 5.10.149-2 (2022-10-21) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -Wall -Werror -pedantic -DNTHREADS -std=c18 -InKernel -InKernel test-nexchange.c nexchange.c nKernel/nthread.c nKernel/nutil.c nKernel/ntime.c nKernel/pss.c nKernel/sched-fcfs.c nKernel/sched-rr.c nKernel/sched-pri-1core.c nKernel/sched-fcfs-1core.c nKernel/sem.c nKernel/mutex-cond.c nKernel/nmsgs.c nKernel/nStack-amd64.s nKernel/nsystem.c -lm -lpthread -lrt -o nexchange.bin-san
+--------------------------------------------
+./nexchange.bin-san
+Info: setting single-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Test de robustez
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 160017
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin-san -slice 1
+Info: setting 1-core round robin scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Test de robustez
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 223001
+Info: Implicit context changes = 24
+==== run-g ====
+gcc -g -Wall -Werror -pedantic -DNTHREADS -std=c18 -InKernel -InKernel test-nexchange.c nexchange.c nKernel/nthread.c nKernel/nutil.c nKernel/ntime.c nKernel/pss.c nKernel/sched-fcfs.c nKernel/sched-rr.c nKernel/sched-pri-1core.c nKernel/sched-fcfs-1core.c nKernel/sem.c nKernel/mutex-cond.c nKernel/nmsgs.c nKernel/nStack-amd64.s nKernel/nsystem.c -lm -lpthread -lrt -o nexchange.bin-g
+--------------------------------------------
+./nexchange.bin-g
+Info: setting single-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Test de robustez
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 1600040
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin-g -slice 1 -ncores 4
+Info: setting 4-core round robin scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Test de robustez
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 4
+Info: total context changes = 2244145
+Info: Implicit context changes = 243
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -pedantic -DNTHREADS -std=c18 -InKernel -InKernel test-nexchange.c nexchange.c nKernel/nthread.c nKernel/nutil.c nKernel/ntime.c nKernel/pss.c nKernel/sched-fcfs.c nKernel/sched-rr.c nKernel/sched-pri-1core.c nKernel/sched-fcfs-1core.c nKernel/sem.c nKernel/mutex-cond.c nKernel/nmsgs.c nKernel/nStack-amd64.s nKernel/nsystem.c -lm -lpthread -lrt -o nexchange.bin
+--------------------------------------------
+./nexchange.bin
+Info: setting single-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Test de robustez
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 1600037
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin -ncores 4
+Info: setting 4-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Test de robustez
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 4
+Info: total context changes = 1600257
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin -slice 1 -ncores 4
+Info: setting 4-core round robin scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Test de robustez
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 4
+Info: total context changes = 2242318
+Info: Implicit context changes = 241

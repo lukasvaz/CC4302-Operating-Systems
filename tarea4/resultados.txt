@@ -1,0 +1,106 @@
+Sistema operativo utilizado
+Linux debian11mate 5.10.0-19-amd64 #1 SMP Debian 5.10.149-2 (2022-10-21) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -Wall -Werror -pedantic -DNTHREADS -std=c18 -InKernel -InKernel test-nexchange.c nexchange.c nKernel/nthread.c nKernel/nutil.c nKernel/ntime.c nKernel/pss.c nKernel/sched-fcfs.c nKernel/sched-rr.c nKernel/sched-pri-1core.c nKernel/sched-fcfs-1core.c nKernel/sem.c nKernel/mutex-cond.c nKernel/nmsgs.c nKernel/nStack-amd64.s nKernel/nsystem.c -lm -lpthread -lrt -o nexchange.bin-san
+--------------------------------------------
+./nexchange.bin-san
+Info: setting single-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Verifica que un timeout expire
+Test 3 b: Como el test 3, pero una tarea con timeout
+Test 4: Verifica que ambos timeouts expiren
+Test 5: Test de robustez
+Revise que no hayan quedado threads pendientes
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 170035
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin-san -slice 1
+Info: setting 1-core round robin scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Verifica que un timeout expire
+Test 3 b: Como el test 3, pero una tarea con timeout
+Test 4: Verifica que ambos timeouts expiren
+Test 5: Test de robustez
+Revise que no hayan quedado threads pendientes
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 234490
+Info: Implicit context changes = 21
+==== run-g ====
+gcc -g -Wall -Werror -pedantic -DNTHREADS -std=c18 -InKernel -InKernel test-nexchange.c nexchange.c nKernel/nthread.c nKernel/nutil.c nKernel/ntime.c nKernel/pss.c nKernel/sched-fcfs.c nKernel/sched-rr.c nKernel/sched-pri-1core.c nKernel/sched-fcfs-1core.c nKernel/sem.c nKernel/mutex-cond.c nKernel/nmsgs.c nKernel/nStack-amd64.s nKernel/nsystem.c -lm -lpthread -lrt -o nexchange.bin-g
+--------------------------------------------
+./nexchange.bin-g
+Info: setting single-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Verifica que un timeout expire
+Test 3 b: Como el test 3, pero una tarea con timeout
+Test 4: Verifica que ambos timeouts expiren
+Test 5: Test de robustez
+Revise que no hayan quedado threads pendientes
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 1700051
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin-g -slice 1 -ncores 4
+Info: setting 4-core round robin scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Verifica que un timeout expire
+Test 3 b: Como el test 3, pero una tarea con timeout
+Test 4: Verifica que ambos timeouts expiren
+Test 5: Test de robustez
+Revise que no hayan quedado threads pendientes
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 4
+Info: total context changes = 2357889
+Info: Implicit context changes = 253
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -pedantic -DNTHREADS -std=c18 -InKernel -InKernel test-nexchange.c nexchange.c nKernel/nthread.c nKernel/nutil.c nKernel/ntime.c nKernel/pss.c nKernel/sched-fcfs.c nKernel/sched-rr.c nKernel/sched-pri-1core.c nKernel/sched-fcfs-1core.c nKernel/sem.c nKernel/mutex-cond.c nKernel/nmsgs.c nKernel/nStack-amd64.s nKernel/nsystem.c -lm -lpthread -lrt -o nexchange.bin
+--------------------------------------------
+./nexchange.bin
+Info: setting single-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Verifica que un timeout expire
+Test 3 b: Como el test 3, pero una tarea con timeout
+Test 4: Verifica que ambos timeouts expiren
+Test 5: Test de robustez
+Revise que no hayan quedado threads pendientes
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 1
+Info: total context changes = 1700353
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin -ncores 4
+Info: setting 4-core FCFS scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Verifica que un timeout expire
+Test 3 b: Como el test 3, pero una tarea con timeout
+Test 4: Verifica que ambos timeouts expiren
+Test 5: Test de robustez
+Revise que no hayan quedado threads pendientes
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 4
+Info: total context changes = 1700521
+Info: Implicit context changes = 0
+--------------------------------------------
+./nexchange.bin -slice 1 -ncores 4
+Info: setting 4-core round robin scheduling
+Test 1: Verifica que los mensajes intercambiados sean correctos
+Test 2: Verifica que el intercambio ocurra con la tarea correcta
+Test 3: Verifica que un timeout expire
+Test 3 b: Como el test 3, pero una tarea con timeout
+Test 4: Verifica que ambos timeouts expiren
+Test 5: Test de robustez
+Revise que no hayan quedado threads pendientes
+Felicitaciones! Su tarea paso todos los tests
+Info: Number of cores = 4
+Info: total context changes = 2360357
+Info: Implicit context changes = 259

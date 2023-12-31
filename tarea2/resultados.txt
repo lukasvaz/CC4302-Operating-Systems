@@ -1,0 +1,53 @@
+Sistema operativo utilizado
+Linux debian11mate 5.10.0-19-amd64 #1 SMP Debian 5.10.149-2 (2022-10-21) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -Wall -Werror -std=c18  test-h2o.c h2o.c pss.c spinlocks.c swap.s -lm -lpthread -o h2o.bin-san
+./h2o.bin-san
+Test de prueba de semantica sin busywaiting
+Test aprobado
+Test de prueba de semantica con busywaiting
+Test aprobado
+Test del orden de formacion de las moleculas sin busywaiting
+Test aprobado
+Test del orden de formacion de las moleculas con busywaiting
+Test aprobado
+Test de robustez sin busywaiting
+Test de prueba de semantica sin busywaiting
+Test aprobado
+Test de prueba de semantica con busywaiting
+Test aprobado
+Felicitaciones: todos los tests aprobados
+==== run-g ====
+gcc -g -Wall -Werror -std=c18  test-h2o.c h2o.c pss.c spinlocks.c swap.s -lm -lpthread -o h2o.bin-g
+./h2o.bin-g
+Test de prueba de semantica sin busywaiting
+Test aprobado
+Test de prueba de semantica con busywaiting
+Test aprobado
+Test del orden de formacion de las moleculas sin busywaiting
+Test aprobado
+Test del orden de formacion de las moleculas con busywaiting
+Test aprobado
+Test de robustez sin busywaiting
+Test de prueba de semantica sin busywaiting
+Test aprobado
+Test de prueba de semantica con busywaiting
+Test aprobado
+Felicitaciones: todos los tests aprobados
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -std=c18  test-h2o.c h2o.c pss.c spinlocks.c swap.s -lm -lpthread -o h2o.bin
+./h2o.bin
+Test de prueba de semantica sin busywaiting
+Test aprobado
+Test de prueba de semantica con busywaiting
+Test aprobado
+Test del orden de formacion de las moleculas sin busywaiting
+Test aprobado
+Test del orden de formacion de las moleculas con busywaiting
+Test aprobado
+Test de robustez sin busywaiting
+Test de prueba de semantica sin busywaiting
+Test aprobado
+Test de prueba de semantica con busywaiting
+Test aprobado
+Felicitaciones: todos los tests aprobados

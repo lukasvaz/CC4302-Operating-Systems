@@ -1,0 +1,92 @@
+Sistema operativo utilizado
+Linux debian11mate 5.10.0-19-amd64 #1 SMP Debian 5.10.149-2 (2022-10-21) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -Wall -Werror -std=c18  suma.c test-suma.c suma.h -lm -lpthread -o suma.bin-san
+./suma.bin-san
+Test 1: El ejemplo del enunciado
+-3 -2 5 
+-3 -2 5 
+test 1 aprobado
+
+--------------------------------------------------
+
+Test 2: Uno ejemplo mas grande con n=26, sin solucion
+Calculando secuencialmente 2 veces
+Tiempo secuencial= 9764 milisegundos
+Tiempo secuencial= 9957 milisegundos
+Calculando en paralelo hasta 5 veces
+buscar par tiempo= 5624 miliseg., speedup= 1.770448
+test 1 aprobado: speedup >= 0.010000
+
+--------------------------------------------------
+
+Uno ejemplo muy grande con n=29, con solucion
+Calculando secuencialmente 2 veces
+-3 -2 5 
+Tiempo secuencial= 0 milisegundos
+Calculando en paralelo
+buscar par tiempo= 55 miliseg., speedup= 0.000000
+No se preocupe.  Es normal que la version paralela se demore
+mucho mas.  Pero piense por que.
+
+Felicitaciones: su tarea funciona
+==== run-g ====
+gcc -g -Wall -Werror -std=c18  suma.c test-suma.c suma.h -lm -lpthread -o suma.bin-g
+./suma.bin-g
+Test 1: El ejemplo del enunciado
+-3 -2 5 
+-3 -2 5 
+test 1 aprobado
+
+--------------------------------------------------
+
+Test 2: Uno ejemplo mas grande con n=26, sin solucion
+Calculando secuencialmente 2 veces
+Tiempo secuencial= 6979 milisegundos
+Tiempo secuencial= 6904 milisegundos
+Calculando en paralelo hasta 5 veces
+buscar par tiempo= 3780 miliseg., speedup= 1.826455
+test 1 aprobado: speedup >= 0.010000
+
+--------------------------------------------------
+
+Uno ejemplo muy grande con n=29, con solucion
+Calculando secuencialmente 2 veces
+-3 -2 5 
+Tiempo secuencial= 0 milisegundos
+Calculando en paralelo
+buscar par tiempo= 0 miliseg., speedup= -nan
+No se preocupe.  Es normal que la version paralela se demore
+mucho mas.  Pero piense por que.
+
+Felicitaciones: su tarea funciona
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -std=c18  suma.c test-suma.c suma.h -lm -lpthread -o suma.bin
+./suma.bin
+Test 1: El ejemplo del enunciado
+-3 -2 5 
+-3 -2 5 
+test 1 aprobado
+
+--------------------------------------------------
+
+Test 2: Uno ejemplo mas grande con n=26, sin solucion
+Calculando secuencialmente 2 veces
+Tiempo secuencial= 3719 milisegundos
+Tiempo secuencial= 3681 milisegundos
+Calculando en paralelo hasta 5 veces
+buscar par tiempo= 2046 miliseg., speedup= 1.799120
+test 1 aprobado: speedup >= 1.500000
+
+--------------------------------------------------
+
+Uno ejemplo muy grande con n=29, con solucion
+Calculando secuencialmente 2 veces
+-3 -2 5 
+Tiempo secuencial= 0 milisegundos
+Calculando en paralelo
+buscar par tiempo= 0 miliseg., speedup= -nan
+No se preocupe.  Es normal que la version paralela se demore
+mucho mas.  Pero piense por que.
+
+Felicitaciones: su tarea funciona
